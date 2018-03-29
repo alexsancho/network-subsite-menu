@@ -113,9 +113,12 @@ class NetworkSubsiteMenu extends \WordPress_SimpleSettings {
 				$class = 'current-menu-item';
 			}
 
+			$_id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $site_id, $site_info, $args );
+			$_id = $_id ? ' id="' . esc_attr( $_id ) . '"' : '';
+
 			$result .= sprintf(
-				'<li id="menu-item-%1$s" class="menu-item menu-item-type-network-subsite menu-item-%1$s %2$s"><a href="%3$s">%4$s</a></li>',
-				$site_id,
+				'<li %1$s class="menu-item menu-item-type-network-subsite menu-item-%1$s %2$s"><a href="%3$s">%4$s</a></li>',
+				$_id,
 				$class,
 				$site_info->siteurl,
 				$site_info->blogname
